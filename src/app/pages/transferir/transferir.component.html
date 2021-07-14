@@ -1,0 +1,87 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Transferir a Terceros</mat-card-title>
+    <mat-card-subtitle>Para realizar una transferencia debe buscar al destinatario e ingresar un monto:
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+
+      <div *ngIf=" addressees.length > 0 " fxLayoutGap="5px">
+        <mat-form-field class="field-full-width" appearance="fill">
+          <mat-label>Buscar Destinatario:</mat-label>
+          <input type="text" matInput [formControl]="addressee" [matAutocomplete]="autoDestinarario">
+          <mat-autocomplete #autoDestinarario="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <button mat-mini-fab color="primary" (click)="openDialogNewAddressee()" #tooltip="matTooltip"
+          matTooltip="Crear Nuevo Destinatario" matTooltipPosition="right" aria-label="Crear Nuevo Destinatario">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <div *ngIf=" addressees.length == 0 " fxLayoutGap="5px">
+        <p>Para continuar debe crear un destinatario</p>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openDialogNewAddressee()"
+          aria-label="Crear Nuevo Destinatario">
+          <mat-icon>add</mat-icon>
+          Crear Nuevo Destinatario
+        </button>
+      </div>
+
+      <mat-card fxFlex="40">
+        <mat-card-header>
+          <mat-card-title>Información de Destinatario</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+
+          <h3 *ngIf=" !addressee.value " [style.margin-top]="'20px'">
+            Debes Seleccionar Un Destinatario Para visualizar la Información
+          </h3>
+          <ul *ngIf=" addressee.value ">
+            <li><b>Banco:</b> Chao</li>
+            <li><b>Cuenta:</b> Chao</li>
+            <li><b>Nombre:</b> Chao</li>
+            <li><b>RUT:</b> Chao</li>
+            <li><b>Correo:</b> Chao</li>
+          </ul>
+
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+    <div *ngIf=" addressee.value " fxLayout="column" fxLayoutAlign="center center" [style.margin-top]="'40px'">
+
+      <mat-card fxLayoutAlign="center center">
+        <mat-card-header>
+          <mat-card-title>Ingrese Monto de Transferencia:</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+          <mat-form-field class="field-full-width" appearance="fill">
+            <mat-label>Monto:</mat-label>
+            <input type="text" matInput [formControl]="amount" (keyup)=" transformToCLP() "/>
+          </mat-form-field>
+
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button color="warn">Cancelar</button>
+    <button [disabled]=" !isDataValid() " mat-stroked-button color="primary">Transferir</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Registrar Nuevo Destinatario</h2>
+<mat-dialog-content class="mat-typography">
+
+  <h3>Para registar un nuevo destinatario, debe completar los siguientes datos:</h3>
+
+  <form [formGroup]="nuevoDestinatarioForm" fxLayout="column">
+
+    <div fxLayoutGap="15px">
+      <mat-form-field fxFlex="50" appearance="fill">
+        <mat-label>RUT:</mat-label>
+        <input type="text" matInput formControlName="rut">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="50" appearance="fill">
+        <mat-label>Nombre:</mat-label>
+        <input type="text" matInput formControlName="nombre">
+      </mat-form-field>
+    </div>
+
+    <div fxLayoutGap="15px">
+      <mat-form-field fxFlex="50" appearance="fill">
+        <mat-label>Correo:</mat-label>
+        <input type="email" matInput formControlName="correo">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="50" appearance="fill">
+        <mat-label>Teléfono:</mat-label>
+        <input type="phone" matInput formControlName="telefono">
+      </mat-form-field>
+    </div>
+
+    <div fxLayoutGap="15px">
+      <mat-form-field fxFlex="50" appearance="fill">
+        <mat-label>Banco:</mat-label>
+        <input type="text" matInput formControlName="banco">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="50" appearance="fill">
+        <mat-label>Tipo Cuenta:</mat-label>
+        <input type="text" matInput formControlName="tipoCuenta">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="50" appearance="fill">
+        <mat-label>N° De Cuenta:</mat-label>
+        <input type="number" matInput formControlName="numeroCuenta">
+      </mat-form-field>
+    </div>
+
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Registrar</button>
+</mat-dialog-actions>
