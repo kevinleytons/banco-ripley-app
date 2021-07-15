@@ -1,14 +1,13 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, CurrencyPipe } from '@angular/common';
 import localeCl from '@angular/common/locales/es-CL';
 registerLocaleData(localeCl);
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,12 +19,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TransferirComponent } from './pages/transferir/transferir.component';
 import { HistorialComponent } from './pages/historial/historial.component';
-import { CurrencyPipe } from '@angular/common';
 import { NuevoDestinatarioDialogComponent } from './shared/dialogs/nuevo-destinatario-dialog/nuevo-destinatario-dialog.component';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,7 @@ import { NuevoDestinatarioDialogComponent } from './shared/dialogs/nuevo-destina
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     MatToolbarModule,
     MatButtonModule,
@@ -52,7 +57,10 @@ import { NuevoDestinatarioDialogComponent } from './shared/dialogs/nuevo-destina
     MatFormFieldModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [

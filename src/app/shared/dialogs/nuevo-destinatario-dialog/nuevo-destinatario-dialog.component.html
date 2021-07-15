@@ -30,17 +30,27 @@
     </div>
 
     <div fxLayoutGap="15px">
-      <mat-form-field fxFlex="50" appearance="fill">
+      <mat-form-field fxFlex="33.3" appearance="fill">
         <mat-label>Banco:</mat-label>
-        <input type="text" matInput formControlName="banco">
+        <input type="text" matInput formControlName="banco" [matAutocomplete]="autoBank">
+        <mat-autocomplete #autoBank="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let bank of filteredBanks | async" [value]="bank">
+            {{bank.name}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field fxFlex="50" appearance="fill">
+      <mat-form-field fxFlex="33.3" appearance="fill">
         <mat-label>Tipo Cuenta:</mat-label>
-        <input type="text" matInput formControlName="tipoCuenta">
+        <input type="text" matInput formControlName="tipoCuenta" [matAutocomplete]="autoTipoCuenta">
+        <mat-autocomplete #autoTipoCuenta="matAutocomplete">
+          <mat-option *ngFor="let tipo of tiposCuenta" [value]="tipo">
+            {{tipo}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
-      <mat-form-field fxFlex="50" appearance="fill">
+      <mat-form-field fxFlex="33.3" appearance="fill">
         <mat-label>N° De Cuenta:</mat-label>
         <input type="number" matInput formControlName="numeroCuenta">
       </mat-form-field>
@@ -53,5 +63,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Registrar</button>
+  <button mat-button [mat-dialog-close]="nuevoDestinatarioForm" cdkFocusInitial>Registrar</button>
 </mat-dialog-actions>

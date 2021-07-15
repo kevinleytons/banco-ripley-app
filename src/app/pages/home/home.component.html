@@ -6,12 +6,10 @@
     </mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content fxLayoutAlign="space-around center" [style.margin]="'5em'">
-
-    <button mat-raised-button color="primary">Registrar Destinatario</button>
-    <button mat-raised-button color="primary">Realizar Transferencia</button>
-    <button mat-raised-button color="primary">Ver Historial de Transferencias</button>
-
+  <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-evenly center" [style.margin]="'3em 0 3em 0'">
+    <button mat-raised-button color="primary" (click)="openDialogNewAddressee()">Registrar Destinatario</button>
+    <button mat-raised-button color="primary" routerLink="/transferir" >Realizar Transferencia</button>
+    <button mat-raised-button color="primary" routerLink="/historial" >Ver Historial de Transferencias</button>
   </mat-card-content>
 
 </mat-card>

@@ -1,11 +1,11 @@
 import { Bank } from 'src/app/shared/models/bank';
 
 export interface Addressee {
-  name: string;
+  nombre: string;
   rut: string;
-  email: string;
-  phone: number;
-  bank: Bank;
-  accountType: string;
-  accountNumber: number;
+  correo: string;
+  telefono: number;
+  banco: Bank;
+  tipo_cuenta: string;
+  numero_cuenta: number;
 }
