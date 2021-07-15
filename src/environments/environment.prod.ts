@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL_API: 'http://localhost:3001/api/v1'
+  URL_API: 'https://banco-ripley-api.herokuapp.com/api/v1'
 };
